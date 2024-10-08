@@ -3,9 +3,11 @@
   "version": "0.0.1",
   "description": "selective ssr",
   "main": "/dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx tsc -w"
+    "dev": "npx tsc -w",
+    "build": "tsup src/index.ts --dts --format cjs --out-dir dist"
   },
   "exports": {
     ".": {
@@ -20,11 +22,20 @@
   "keywords": [
     "ssr",
     "conditional",
+    "open source",
     "react",
-    "react native"
+    "react native",
+    "vue",
+    "javascript",
+    "typescript",
+    "vanilla",
+    "route handlers",
+    "solid",
+    "qwik",
+    "csr",
+    "framework"
   ],
   "dependencies": {
-    "@types/node": "^22.7.4",
     "chokidar": "^4.0.1",
     "cors": "^2.8.5",
     "express": "^4.21.0",
@@ -33,8 +44,10 @@
     "vite": "^5.4.8"
   },
   "devDependencies": {
+    "@types/node": "^22.7.4",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
+    "tsup": "^8.3.0",
     "typescript": "^5.6.2"
   }
 }

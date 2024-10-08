@@ -6,8 +6,6 @@ import fs from "fs";
 import path from "path";
 import chokidar from "chokidar";
 
-type ServerFunction = () => Promise<any>;
-
 export function queryProxy(): Plugin {
   let outputDir: string;
 

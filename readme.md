@@ -10,6 +10,7 @@ Lightweight Route Hanlders on any client framework; react, vue, svelte, qwik, so
 - Query proxy can currently only be deployed with vercel
 - Better support for legacy applications and better typesafety would be available in the coming days
 - Run the server locally to generate the "api/serverFn" folder in the root of your project before deploying to vercel
+- Only compatible with vite powered client apps
 
 ## Quick Guide 📖
 

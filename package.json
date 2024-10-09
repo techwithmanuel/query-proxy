@@ -1,6 +1,6 @@
 {
   "name": "query-proxy",
-  "version": "0.0.1",
+  "version": "0.0.994",
   "description": "selective ssr",
   "main": "/dist/index.js",
   "types": "./dist/index.d.ts",

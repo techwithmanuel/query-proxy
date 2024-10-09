@@ -1,7 +1,7 @@
 import { serverFns } from "./fn";
 
 // Type for the server function names (keys of the Map)
-type ServerFnName = string;
+type ServerFnName = keyof typeof serverFns extends string ? string : never;
 
 // Type for the return type of the server functions
 type ServerFnReturnType<T extends ServerFnName> = ReturnType<

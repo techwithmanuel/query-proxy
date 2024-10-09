@@ -1,16 +1,22 @@
-export const serverFns = new Map<string, () => Promise<any>>();
+import { Response, Request } from "express";
+
+export const serverFns = new Map<
+  string,
+  (req?: Request, res?: Response) => Promise<any>
+>();
 
 export function createServerFn<T extends string, U>(
   fnName: T,
-  fn: () => Promise<U>
-): () => Promise<U> {
+  fn: (req?: Request, res?: Response) => Promise<U>
+): (req?: Request, res?: Response) => Promise<U> {
   if (typeof window === "undefined") {
     serverFns.set(fnName, fn);
   }
-
   return fn;
 }
 
-export function getServerFn(fnName: string): (() => Promise<any>) | undefined {
+export function getServerFn(
+  fnName: string
+): ((req?: Request, res?: Response) => Promise<any>) | undefined {
   return serverFns.get(fnName);
 }

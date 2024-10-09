@@ -38,7 +38,7 @@ Lightweight Route Hanlders on any client framework; react, vue, svelte, qwik, so
 
   createServerFn("myFunction", async (req, res) => {
     console.log("Hello from the server user!");
-    return res.status(200).json({
+    res.status(200).json({
       message: "JavaScript logic executed on the server",
       timestamp: new Date(),
     });

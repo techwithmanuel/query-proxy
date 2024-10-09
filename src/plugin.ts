@@ -54,6 +54,8 @@ export function queryProxy(): Plugin {
       // Development middleware setup
       const app = express();
 
+      app.use(express.json());
+
       app.use(
         cors({
           origin: "*",
@@ -63,21 +65,15 @@ export function queryProxy(): Plugin {
 
       // Set up routes for development
       serverFns.forEach((fn, fnName) => {
-        app.get(
-          `/api/serverFn/${fnName}`,
-          async (req: Request, res: Response) => {
-            try {
-              const result = await fn();
-              res.json(result);
-            } catch (error) {
-              console.error(
-                `Error executing server function ${fnName}:`,
-                error
-              );
-              res.status(500).json({ error: (error as Error).message });
-            }
+        app.get(`/api/serverFn/${fnName}`, async (req, res) => {
+          try {
+            const result = await fn();
+            res.json(result);
+          } catch (error) {
+            console.error(`Error executing server function ${fnName}:`, error);
+            res.status(500).json({ error: (error as Error).message });
           }
-        );
+        });
       });
 
       server.middlewares.use(app);
